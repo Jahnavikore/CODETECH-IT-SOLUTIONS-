@@ -1,0 +1,93 @@
+import time
+
+def introduction():
+    print("Welcome to the Text-Based Adventure Game!")
+    print("You find yourself in a mysterious forest. Your goal is to reach the treasure.")
+    print("Be careful, as your choices will determine your fate!\n")
+
+def make_choice(choices):
+    print("Choose your path:")
+    for i, option in enumerate(choices, start=1):
+        print(f"{i}. {option}")
+
+    while True:
+        try:
+            choice = int(input("Enter the number of your choice: "))
+            if 1 <= choice <= len(choices):
+                return choice
+            else:
+                print("Invalid choice. Please enter a valid number.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+def forest_path():
+    print("You come across a fork in the path.")
+    choices = ["Take the left path", "Take the right path"]
+    choice = make_choice(choices)
+
+    if choice == 1:
+        print("You encounter a friendly squirrel. It guides you to a shortcut.")
+        return True
+    else:
+        print("You hear strange noises in the bushes, but you decide to proceed.")
+        return False
+
+def encounter_enemy():
+    print("Oh no! A wild creature appears!")
+    choices = ["Fight", "Run"]
+    choice = make_choice(choices)
+
+    if choice == 1:
+        print("You engage in a fierce battle.")
+        time.sleep(1)
+        print("You defeated the creature!")
+    else:
+        print("You try to run away, but the creature catches up.")
+        time.sleep(1)
+        print("You narrowly escape, but you're injured.")
+
+def treasure_room():
+    print("Congratulations! You reach the treasure room.")
+    print("You found the legendary treasure chest. You open it and discover unimaginable riches!")
+
+def main():
+    introduction()
+
+    if forest_path():
+        print("You continue your journey.")
+        encounter_enemy()
+        treasure_room()
+    else:
+        print("You face numerous obstacles in the dense forest.")
+        encounter_enemy()
+        print("Despite the challenges, you manage to find an alternative route.")
+        treasure_room()
+
+if __name__ == "__main__":
+    main()
+
+OUTPUT :
+
+Welcome to the Text-Based Adventure Game!
+You find yourself in a mysterious forest. Your goal is to reach the treasure.
+Be careful, as your choices will determine your fate!
+
+You come across a fork in the path.
+Choose your path:
+1. Take the left path
+2. Take the right path
+
+Enter the number of your choice: 2
+You hear strange noises in the bushes, but you decide to proceed.
+You face numerous obstacles in the dense forest.
+Oh no! A wild creature appears!
+Choose your path:
+1. Fight
+2. Run
+
+Enter the number of your choice: 1
+You engage in a fierce battle.
+You defeated the creature!
+Despite the challenges, you manage to find an alternative route.
+Congratulations! You reach the treasure room.
+You found the legendary treasure chest. You open it and discover unimaginable riches!

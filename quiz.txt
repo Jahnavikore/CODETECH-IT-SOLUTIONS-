@@ -1,0 +1,86 @@
+import random
+
+class Quiz:
+    def __init__(self, questions):
+        self.questions = questions
+        self.score = 0
+
+    def display_question(self, question, choices):
+        print(question)
+        for i, choice in enumerate(choices, start=1):
+            print(f"{i}. {choice}")
+        answer = input("Enter the number of your answer: ")
+        return answer
+
+    def run_quiz(self):
+        random.shuffle(self.questions)
+
+        for question_data in self.questions:
+            question = question_data['question']
+            choices = question_data['choices']
+            correct_answer = question_data['correct']
+
+            answer = self.display_question(question, choices)
+
+            if answer.isdigit() and 1 <= int(answer) <= len(choices):
+                user_answer_index = int(answer) - 1
+                choice = choices[user_answer_index]
+
+                if choice == correct_answer:
+                    print("Correct!\n")
+                    self.score += 1
+                else:
+                    print(f"Wrong! The correct answer is: {correct_answer}\n")
+            else:
+                print("Invalid input. Skipping this question.\n")
+
+        print(f"Quiz completed! Your score: {self.score}/{len(self.questions)}")
+        print("Thanks for playing!")
+
+if __name__ == "__main__":
+    questions = [
+        {
+            'question': 'What are Variable?',
+            'choices': ['which store values', 'which store adress', 'which store references'],
+            'correct': 'which store values'
+        },
+        {
+            'question': 'Who invented python',
+            'choices': ['guido van', 'dennis', 'gosling'],
+            'correct': 'guido van'
+        },
+        {
+            'question': 'when python is invented',
+            'choices': ['1992', '1991', '1980'],
+            'correct': '1991'
+        },
+        # Add more questions as needed
+    ]
+
+    quiz = Quiz(questions)
+    quiz.run_quiz()
+
+OUTPUT :
+
+Who invented python
+1. guido van
+2. dennis
+3. gosling
+Enter the number of your answer: 1
+Correct!
+
+when python is invented
+1. 1992
+2. 1991
+3. 1980
+Enter the number of your answer: 1
+Wrong! The correct answer is: 1991
+
+What are Variable?
+1. which store values
+2. which store adress
+3. which store references
+Enter the number of your answer: 1
+Correct!
+Quiz completed! Your score: 2/3
+Thanks for playing!
