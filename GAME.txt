@@ -2,11 +2,10 @@ import time
 
 def introduction():
     print("Welcome to the Text-Based Adventure Game!")
-    print("You find yourself in a mysterious forest. Your goal is to reach the treasure.")
-    print("Be careful, as your choices will determine your fate!\n")
+    print("You find yourself in a forest. Your goal is to reach the treasure.")
 
 def make_choice(choices):
-    print("Choose your path:")
+    print("Choose your direction:")
     for i, option in enumerate(choices, start=1):
         print(f"{i}. {option}")
 
@@ -38,17 +37,16 @@ def encounter_enemy():
     choice = make_choice(choices)
 
     if choice == 1:
-        print("You engage in a fierce battle.")
+        print("You engage in fight.")
         time.sleep(1)
-        print("You defeated the creature!")
+        print("You won in the fight ")
     else:
-        print("You try to run away, but the creature catches up.")
+        print("You try to run away")
         time.sleep(1)
         print("You narrowly escape, but you're injured.")
 
 def treasure_room():
     print("Congratulations! You reach the treasure room.")
-    print("You found the legendary treasure chest. You open it and discover unimaginable riches!")
 
 def main():
     introduction()
